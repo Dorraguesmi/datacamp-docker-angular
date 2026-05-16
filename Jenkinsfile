@@ -9,7 +9,7 @@ pipeline {
 
         stage ('Clone Stage') {
             steps {
-                git 'https://github.com/YOUR_GITHUB_USERNAME/datacamp-docker-angular.git'
+                git 'https://github.com/Dorraguesmi/datacamp-docker-angular.git'
                 echo "Version: ${env.DOCKER_TAG}"
             }
         }
