@@ -49,7 +49,7 @@ DOCKERFILE
             steps {
                 sshagent(credentials: ['Vagrant_ssh']) {
                     sh 'ssh -o StrictHostKeyChecking=no admin@10.15.122.48 "sudo docker pull dorra1/angular-app:${DOCKER_TAG}"'
-                    sh 'ssh -o StrictHostKeyChecking=no admin@10.15.122.48 "sudo docker stop \$(sudo docker ps -q --filter ancestor=dorra1/angular-app) 2>/dev/null || true"'
+                    sh 'ssh -o StrictHostKeyChecking=no admin@10.15.122.48 "sudo docker ps -q | xargs -r sudo docker stop || true"'
                     sh 'ssh -o StrictHostKeyChecking=no admin@10.15.122.48 "sudo docker run -d -p 80:80 dorra1/angular-app:${DOCKER_TAG}"'
                 }
             }
